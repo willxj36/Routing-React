@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FilmID from './filmID';
-import { BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 
 class Films extends Component {
 
@@ -18,7 +18,7 @@ class Films extends Component {
                                 <h4 className="card-title">{film.title}</h4>
                                 <h6 className="card-subtitle m-2 text-muted">{film.release_date}</h6>
                                 <p className="card-text">{film.description}</p>
-                                <Link to={`/films/${index}`} className="btn btn-dark">Info on {film.title}</Link>
+                                <Link to={`/films/${index}`} className="btn btn-dark m-2">Info on {film.title}</Link>
                             </div>
                         </div>
                     )
@@ -30,18 +30,19 @@ class Films extends Component {
 
     render() {
         return (
-            <>
-                <div className="row">
-                    <Router>
-                        <Link to="/films">Films Home</Link>
+            <div className="container">
+                <Router>
+                    <div className="row">
+                        <Link to="/films" className="btn btn-dark">Films Home</Link>
+                    </div>
+                    <div className="row">
                         <Switch>
-                            <Route exact path="/films" component={Films}></Route>
-                            <Route path="/films/:id" component={FilmID}></Route>
+                            <Route exact path="/films">{this.state.filmArray}</Route>
+                            <Route exact path="/films/:id" component={FilmID}></Route>
                         </Switch>
-                    </Router>
-                </div>
-                {this.state.filmArray}
-            </>
+                    </div>
+                </Router>
+            </div>
         );
     }
 

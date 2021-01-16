@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class FilmID extends Component {
 
     state = {
-        film: this.props.match.id,
+        film: this.props.match.params.id,
         info: null
     }
 
@@ -26,8 +26,8 @@ class FilmID extends Component {
                         </div>
                     </div>
                 )                    
+                this.setState({ info: filmInfo });
             }).catch(err => console.log(err));
-        this.setState({ info: filmInfo });
     }
 
     render() {return(<> {this.state.info} </>)}
